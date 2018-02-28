@@ -78,6 +78,23 @@ extern NSInteger const RMStoreErrorCodeUnableToCompleteVerification;
            success:(void (^)(SKPaymentTransaction *transaction))successBlock
            failure:(void (^)(SKPaymentTransaction *transaction, NSError *error))failureBlock __attribute__((availability(ios,introduced=7.0)));
 
+/**
+ Add by wxy.
+ Request payment of the product with the given product identifier and quantity. `successBlock` will be called if the payment is successful, `failureBlock` if it isn't.
+
+ @param productIdentifier The identifier of the product whose payment will be requested.
+ @param userIdentifier An opaque identifier of the user's account, if applicable. Can be 'nil'.
+ @param quantity The quantity of payment will to requested.
+ @param successBlock The block to be called if the payment is successful. Can be 'nil'.
+ @param failureBlock The block to be called if the payment fails or there isn't any product with the given identifier. Can be 'nil'.
+ */
+- (void)addPayment:(NSString *)productIdentifier
+              user:(NSString *)userIdentifier
+          quantity:(NSInteger)quantity
+           success:(void (^)(SKPaymentTransaction *transaction))successBlock
+           failure:(void (^)(SKPaymentTransaction *transaction, NSError *error))failureBlock __attribute__((availability(ios,introduced=7.0)));
+
+
 /** Request localized information about a set of products from the Apple App Store.
  @param identifiers The set of product identifiers for the products you wish to retrieve information of.
  */
