@@ -242,7 +242,7 @@ typedef void (^RMStoreSuccessBlock)();
         return;
     }
     SKMutablePayment *payment = [SKMutablePayment paymentWithProduct:product];
-    payment.quantity = quantity;
+    payment.quantity = quantity ? : 1; // quantity can not be zero
     if ([payment respondsToSelector:@selector(setApplicationUsername:)])
     {
         payment.applicationUsername = userIdentifier;
